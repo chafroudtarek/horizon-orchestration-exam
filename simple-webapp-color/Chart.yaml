@@ -1,0 +1,6 @@
+name: simple-webapp-color
+version: 1.0.0
+description: A Helm Chart for simple-webapp-color
+maintainers:
+  - name: chafroudtarek
+    email: chafroudtarek6@gmail.com

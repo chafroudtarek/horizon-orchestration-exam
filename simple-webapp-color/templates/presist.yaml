@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  namespace: tarekchafroud
+  name: simple-webapp-color
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-webapp-color
+  template:
+    metadata:
+      labels:
+        app: simple-webapp-color
+    spec:
+      containers:
+        - name: simple-webapp-color
+          image: ghcr.io/horizon-school-of-digital-technologies/simple-webapp-color:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_COLOR
+              value: blue
+          volumeMounts:
+            - name: data-volume
+              mountPath: "/tmp/data"
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: my-storage-claim

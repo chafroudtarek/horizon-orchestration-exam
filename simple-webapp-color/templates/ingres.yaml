@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-webapp-color
+  namespace: tarekchafroud
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: simple-webapp-color
+  tls:
+    - hosts:
+        - tarekchafroud.color.horizon-workspaces.com
+      secretName: tarekchafroud-general-tls
+  rules:
+    - host: tarekchafroud.color.horizon-workspaces.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myservice
+                port:
+                  number: 80

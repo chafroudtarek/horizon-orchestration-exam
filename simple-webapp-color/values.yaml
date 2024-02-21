@@ -1,0 +1,18 @@
+# Define default values for your application
+replicaCount: 3
+image:
+  repository: ghcr.io/horizon-school-of-digital-technologies/simple-webapp-color
+  tag: latest
+containerPort: 8080
+appColor: blue
+
+servicePort: 80
+
+ingress:
+  host: tarekchafroud.color.horizon-workspaces.com
+
+pvcName: my-storage-claim
+storageSize: 1Gi
+storageClassName: gp2
+
+namespace: tarekchafroud
